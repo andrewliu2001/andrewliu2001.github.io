@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Andrew Liu</title>
+    <style>
+        :root {
+            --max: 860px;
+        }
+
+        body {
+            margin: 0;
+            font: 15px/1.6 system-ui, sans-serif;
+            color: #111;
+            background: #fff;
+        }
+
+        header,
+        nav,
+        main,
+        footer {
+            max-width: var(--max);
+            margin: auto;
+            padding: 1rem;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .title {
+            font-size: 1.75rem;
+            margin: 0;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: #555;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+            position: sticky;
+            top: 0;
+            background: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        nav a[aria-current="page"] {
+            background: #eee;
+            font-weight: bold;
+        }
+
+        section {
+            display: none;
+            padding-top: 1rem;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        footer {
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/9919?s=200" alt="Avatar" />
+        <div>
+            <h1 class="title">Andrew Liu</h1>
+            <p class="subtitle">Machine Learning Researcher</p>
+        </div>
+    </header>
+
+
+    <nav>
+        <a href="#home" id="tab-home" aria-current="page">Home</a>
+        <a href="#research" id="tab-research">Research</a>
+        <a href="#notes" id="tab-notes">Notes</a>
+    </nav>
+
+
+    <main>
+        <section id="home" class="active">
+            <h2>Bio</h2>
+            <p>I am a machine learning researcher at Flagship Pioneering focusing on efficient models for
+                drug discovery. I am currently
+                focused on factorized and linear I/O modules for long‑sequence biomolecular modeling. Previously, I
+                received my MS in Computer Science and BS in Applied Mathematics (Magna Cum Laude) at Columbia
+                University. I was also an intern at Alibaba Group, where I was part of the Qwen team working on RLHF.
+            </p>
+            <h2>Selected Publications</h2>
+            <ul>
+                <li><strong>Flash Invariant Point Attention</strong><br> Andrew Liu, Axel Elaldi, Nicholas T Franklin,
+                    Nathan Russell, Gurinder S Atwal, Yih-En A Ban, Olivia Viessmann
+
+                    et al. — NeurIPS 2025 (Spotlight, top 1-3% of submissions)</li>
+                <li><strong>Bio2Token: All-atom tokenization of any biomolecular structure with Mamba</strong><br>
+                    Andrew Liu, Axel Elaldi, Nathan Russell, Olivia Viessmann
+                    — ICLR 2025 GEM Workshop</li>
+            </ul>
+        </section>
+
+
+        <section id="research">
+            <h2>Research</h2>
+            <p>Interests: Efficient model architectures, AI4Science
+            <ul>
+                <li><strong>Flash Invariant Point Attention</strong><br> Andrew Liu, Axel Elaldi, Nicholas T Franklin,
+                    Nathan Russell, Gurinder S Atwal, Yih-En A Ban, Olivia Viessmann
+
+                    et al. — NeurIPS 2025 (Spotlight, top 1-3% of submissions)</li>
+                <li><strong>Bio2Token: All-atom tokenization of any biomolecular structure with Mamba</strong><br>
+                    Andrew Liu, Axel Elaldi, Nathan Russell, Olivia Viessmann
+                    — ICLR 2025 GEM Workshop</li>
+            </ul>
+        </section>
+
+
+        <section id="notes">
+            <h2>Notes</h2>
+            The challenge here is to reason mostly in plain English and to appeal to basic intuitions, rather to rely on
+            lengthy derivations. Vigor over rigor is the goal.
+            <ul>
+                <li><strong>High performance machine learning</strong></li>
+                <li><strong>Sequence modeling primitives</strong></li>
+                <li><strong>Reinforcement learning</strong></li>
+                <li><strong>Statistical physics</strong></li>
+                <li><strong>Quantum mechanics</strong></li>
+                <li><strong>Numerical methods</strong></li>
+                <li><strong>Bayesian/probabilistic machine learning</strong></li>
+                <li><strong>Randomized algorithms</strong></li>
+            </ul>
+        </section>
+    </main>
+
+
+    <footer>
+        © <span id="year"></span> Andrew Liu — <a href="https://github.com/andrewliu2001">GitHub</a> | <a
+            href="https://scholar.google.com/citations?user=NWtEXy9DkBEC&hl=en">Google Scholar</a> | <a
+            href="https://www.linkedin.com/in/andrew-liu-114b91272/">LinkedIn</a>
+    </footer>
+
+
+    <script>
+        const tabs = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('main section');
+        function activateTab(hash) {
+            const id = hash ? hash.substring(1) : 'home';
+            sections.forEach(s => s.classList.toggle('active', s.id === id));
+            tabs.forEach(t => t.setAttribute('aria-current', t.getAttribute('href') === '#' + id ? 'page' : 'false'));
+        }
+        window.addEventListener('hashchange', () => activateTab(location.hash));
+        activateTab(location.hash);
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
